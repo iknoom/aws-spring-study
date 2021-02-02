@@ -34,6 +34,20 @@ deploy:
     local_dir: deploy
     wait-until-deployed: true
 
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+
+    bucket: iknoom-springboot-build
+    key: iknoom-springboot2-webservice.zip
+    bundle_type: zip
+    application: iknoom-springboot2-webservice
+
+    deployment_group: iknoom-springboot2-webservice-group
+
+    region: ap-northeast-2
+    wait-until-deployed: true
+
 # CI 시 메일 알림
 notifications:
   email:
